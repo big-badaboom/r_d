@@ -10,11 +10,11 @@ const MEAT = "meat";
 const notFood = "plastic";
 const choco = "chocolate";
 
-const REVERT = "VM Exception while processing transaction: revert";
+const REVERT = "VM Exception while processing transaction: revert ";
 
-const expectedErrorChoco = " Dogs should not eat chocolate. It is toxic for them!";
-const expectedErrorNotFood = " It doesn't eat that!";
-const expectedErrorPlantFoodOnly = " Can only eat plant food";
+const expectedErrorChoco = "Dogs should not eat chocolate. It is toxic for them!";
+const expectedErrorNotFood = "It doesn't eat that!";
+const expectedErrorPlantFoodOnly = "Can only eat plant food";
 
 let cow = null;
 let horse = null;
@@ -47,7 +47,7 @@ contract("Horse and Farmer", async (account) => {
         } catch (e) {
             message = e.message;
         }
-        assert.isTrue(message.toString().indexOf("revert") >= 0, "Error message differs from what is expected.");
+        assert.isTrue(message.startsWith(REVERT), "Error message differs from what is expected.");
         assert.equal(REVERT + expectedErrorPlantFoodOnly, message, "Error messages are not equal!")
     });
 
@@ -69,7 +69,7 @@ contract("Horse and Farmer", async (account) => {
         } catch (e) {
             message = e.message;
         }
-        assert.isTrue(message.toString().indexOf("revert") >= 0, "Error message differs from what is expected.");
+        assert.isTrue(message.startsWith(REVERT), "Error message differs from what is expected.");
         assert.equal(REVERT + expectedErrorPlantFoodOnly, message, "Error messages are not equal.")
     });
 })
@@ -103,7 +103,7 @@ contract("Dog and Farmer", async (account) => {
         } catch (e) {
             message = e.message
         }
-        assert.isTrue(message.toString().indexOf("revert") >= 0, "Error message differs from what is expected.");
+        assert.isTrue(message.startsWith(REVERT), "Error message differs from what is expected.");
         assert.equal(REVERT + expectedErrorChoco, message, "Errors are not equal")
     })
 
@@ -113,7 +113,7 @@ contract("Dog and Farmer", async (account) => {
         } catch (e) {
             message = e.message
         }
-        assert.isTrue(message.toString().indexOf("revert") >= 0, "Error message differs from what is expected.");
+        assert.isTrue(message.startsWith(REVERT), "Error message differs from what is expected.");
         assert.equal(REVERT + expectedErrorNotFood, message, "Errors are not equal")
     })
 
@@ -134,7 +134,7 @@ contract("Dog and Farmer", async (account) => {
         } catch (e) {
             message = e.message
         }
-        assert.isTrue(message.toString().indexOf("revert") >= 0, "Error message differs from what is expected.");
+        assert.isTrue(message.startsWith(REVERT), "Error message differs from what is expected.");
         assert.equal(REVERT + expectedErrorNotFood, message, "Error messages are not equal.");
     })
 
@@ -144,21 +144,11 @@ contract("Dog and Farmer", async (account) => {
         } catch (e) {
             message = e.message
         }
-        assert.isTrue(message.toString().indexOf("revert") >= 0, "Error message differs from what is expected.");
+        assert.isTrue(message.startsWith(REVERT), "Error message differs from what is expected.");
         assert.equal(REVERT + expectedErrorChoco, message, "Errors are not equal")
     })
 
-})
-
-// module.exports = async () => {
-
-//     cow = await Cow.deployed();
-
-//     wolf = await Wolf.deployed();
-
-//     farmer = await Farmer.deployed();
-
-//     
+})  
 
 async function call(animalAddress) {
     return await farmer.call(animalAddress);
