@@ -624,8 +624,6 @@ contract LizToken is ERC20Burnable, Ownable, ERC20Capped {
 
     function _mint(address account, uint256 amount) internal onlyOwner() virtual override{
         require(ERC20.totalSupply() + amount <= cap(), "ERC20Capped: cap exceeded");
-        // _checkOwner();
-        // account = _msgSender();
         super._mint(account, amount);
     }
 }
