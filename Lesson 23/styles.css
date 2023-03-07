@@ -1,0 +1,146 @@
+html {
+    font-family: 'Syne Mono', monospace;
+}
+
+#nav {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    background-color: #eee;
+    border: solid rgb(215, 214, 214);
+    padding: 5px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    border: solid rgba(0, 0, 0, 0.283);
+    background-color: rgba(128, 128, 128, 0.465);
+    padding: 10px;
+}
+
+#main-wrapper {
+    display: grid;
+    grid-template-areas:
+        "red blue green";
+    column-gap: 16px;
+}
+
+#main{
+    grid-area: main;
+    text-align: center;
+}
+
+#red {
+    grid-area: red;
+    background-color: red;
+    border: outset orange 10px;
+}
+
+#blue {
+    background-color: blue;
+    grid-area: blue;
+    border: ridge aquamarine 10px;
+}
+
+#green {
+    grid-area: green;
+    background-color: green;
+    border: dotted yellow 10px;
+}
+
+#about-wrapper {
+    display: grid;
+    grid-template-areas:
+        "pink purple orange";
+    column-gap: 16px;
+}
+
+#about{
+    grid-area: about;
+    justify-self: center;
+    text-align: center;
+}
+
+#pink {
+    background-color: pink;
+    grid-area: pink;
+    border: magenta double 10px;
+}
+
+#purple {
+    background-color: purple;
+    grid-area: purple;
+    border: dashed greenyellow 10px;
+}
+
+#orange {
+    background-color: orange;
+    grid-area:orange;
+    border: solid yellow 10px;
+}
+
+.item {
+    border-radius: 25px;
+    padding: 25px 25px;
+}
+
+#contact-form {
+    text-align: center;
+}
+
+legend,
+#about,
+#main {
+    font-size: 25px;
+    text-decoration: underline;
+}
+
+#textarea {
+    height: 50px;
+}
+
+#send-btn {
+    background-color: darkred;
+    color: white;
+}
+
+#send-btn,
+#textarea {
+    align-self: center;
+    width: 30%;
+}
+
+@media (max-width: 768px) {
+    #nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #main-wrapper,
+    #about-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        gap: 16px;
+    }
+
+    #textarea {
+        width: 100%;
+        
+        align-self: center;
+    }
+    
+    #send-btn {
+        width: 100%;
+        background-color: darkred;
+        color: white;
+        align-self: center;
+    }
+
+}
+
+
+
+
